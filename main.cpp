@@ -239,6 +239,13 @@ extern "C" void* ThreadCrawler(void* data) {
       //bool getaddr = res.ourLastSuccess + 86400 < now;
       bool getaddr = true;
       res.fGood = TestNode(res.service,res.nBanTime,res.nClientV,res.strClientV,res.nHeight,getaddr ? &addr : NULL, res.services);
+      printf("node %s ban=%d services=0x%lx proto=%d height=%d good=%d\n",
+            res.service.ToString().c_str(),
+            res.nBanTime,
+            res.services, res.nClientV, res.nHeight, res.fGood);
+      printf("node %s addr_count=%zu\n",
+            res.service.ToString().c_str(),
+            addr.size());
     }
     db.ResultMany(ips);
     db.Add(addr);
