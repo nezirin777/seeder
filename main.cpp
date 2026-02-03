@@ -149,18 +149,12 @@ public:
         }
       }
     }
-    if (filter_whitelist.empty()) {
-        filter_whitelist.insert(NODE_NETWORK);
-        filter_whitelist.insert(NODE_NETWORK | NODE_BLOOM);
-        filter_whitelist.insert(NODE_NETWORK | NODE_WITNESS);
-        filter_whitelist.insert(NODE_NETWORK | NODE_WITNESS | NODE_COMPACT_FILTERS);
-        filter_whitelist.insert(NODE_NETWORK | NODE_WITNESS | NODE_BLOOM);
-        filter_whitelist.insert(NODE_NETWORK_LIMITED);
-        filter_whitelist.insert(NODE_NETWORK_LIMITED | NODE_BLOOM);
-        filter_whitelist.insert(NODE_NETWORK_LIMITED | NODE_WITNESS);
-        filter_whitelist.insert(NODE_NETWORK_LIMITED | NODE_WITNESS | NODE_COMPACT_FILTERS);
-        filter_whitelist.insert(NODE_NETWORK_LIMITED | NODE_WITNESS | NODE_BLOOM);
-    }
+
+    filter_whitelist.clear();
+    filter_whitelist.insert(0x1);
+    filter_whitelist.insert(0x5);
+    filter_whitelist.insert(0xD);
+
     if (host != NULL && ns == NULL) showHelp = true;
     if (showHelp) {
         fprintf(stderr, help, argv[0]);
